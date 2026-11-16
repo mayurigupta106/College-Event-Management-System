@@ -1,0 +1,5 @@
+data/registrations.txt
+*.exe
+*.o
+*.tmp
+.vscode/

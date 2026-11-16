@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <h2>CampusEvents</h2>
+            <ul>
+                <li><a href="#admin">Admin</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#events" class="nav-btn">Explore Events</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover. Participate. Celebrate.</h1>
+            <p>
+                Explore exciting college events, participate
+                in competitions and create unforgettable memories.
+            </p>
+            <a href="#events" class="btn">Explore Events</a>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <h2>Upcoming Events</h2>
+        <p>Discover what's happening on your campus.</p>
+        <div class="event-container" id="eventContainer">
+            <p>Loading events...</p>
+        </div>
+    </section>
+
+    <!-- Student Registration Form -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <h2>Student Registration</h2>
+            <p>Register for your favourite college event!</p>
+
+            <form id="registrationForm">
+                <label>Student Name</label>
+                <input type="text" id="studentName"
+                       placeholder="Enter your name" required>
+
+                <label>Roll Number</label>
+                <input type="text" id="rollNumber"
+                       placeholder="Enter your roll number" required>
+
+                <label>Email Address</label>
+                <input type="email" id="studentEmail"
+                       placeholder="Enter your email" required>
+
+                <label>Select Event</label>
+                <select id="eventName" required>
+                    <option value="">Choose an event</option>
+                </select>
+
+                <button type="submit">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <section id="admin" class="admin-dashboard">
+
+        <h2>Admin Dashboard</h2>
+        <p>Manage college events and student registrations.</p>
+
+        <!-- Dashboard Statistics -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Total Events</h3>
+                <p id="totalEvents">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Total Registrations</h3>
+                <p id="totalRegistrations">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Upcoming Events</h3>
+                <p id="upcomingEvents">0</p>
+            </div>
+        </div>
+
+        <!-- Add New Event -->
+        <div class="add-event-section">
+            <h3>Add New Event</h3>
+
+            <form id="addEventForm" class="add-event-form">
+
+                <label for="newEventName">Event Name</label>
+                <input type="text" id="newEventName"
+                       placeholder="Enter event name" required>
+
+                <label for="newEventDate">Event Date</label>
+                <input type="date" id="newEventDate" required>
+
+                <label for="newEventVenue">Venue</label>
+                <input type="text" id="newEventVenue"
+                       placeholder="Enter venue" required>
+
+                <label for="newEventCategory">Category</label>
+                <select id="newEventCategory" required>
+                    <option value="">Select category</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <button type="submit">Add Event</button>
+            </form>
+        </div>
+
+        <!-- Edit Event Form -->
+        <div class="add-event-section" id="editEventSection"
+             style="display: none;">
+
+            <h3>Edit Event</h3>
+
+            <form id="editEventForm" class="add-event-form">
+
+                <input type="hidden" id="editEventId">
+
+                <label for="editEventName">Event Name</label>
+                <input type="text" id="editEventName" required>
+
+                <label for="editEventDate">Event Date</label>
+                <input type="date" id="editEventDate" required>
+
+                <label for="editEventVenue">Venue</label>
+                <input type="text" id="editEventVenue" required>
+
+                <label for="editEventCategory">Category</label>
+                <select id="editEventCategory" required>
+                    <option value="Technical">Technical</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <button type="submit">Update Event</button>
+                <button type="button" onclick="cancelEdit()">
+                    Cancel
+                </button>
+            </form>
+        </div>
+
+        <!-- Manage Events Table -->
+        <h3 class="table-heading">Manage Events</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event ID</th>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        <th>Category</th>
+                        <th>Registrations</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="manageEventsTable">
+                    <tr>
+                        <td colspan="6">Loading events...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Student Registration Table -->
+        <h3 class="table-heading">Student Registrations</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Roll Number</th>
+                        <th>Email</th>
+                        <th>Event</th>
+                    </tr>
+                </thead>
+
+                <tbody id="registrationTable">
+                    <tr>
+                        <td colspan="4">No registrations yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Our Platform</h2>
+        <p>
+            College Event Management System helps students
+            discover college events and participate in
+            different activities through one platform.
+        </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: events@college.edu</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 College Event Management System</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

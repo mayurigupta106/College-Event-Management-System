@@ -1,0 +1,477 @@
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f5f7fb;
+    color: #222;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background-color: #151b3d;
+    color: white;
+}
+
+.navbar h2 {
+    color: #8b9cff;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #8b9cff;
+}
+
+.nav-btn {
+    background: #6578ef;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #151b3d, #465bd8);
+    color: white;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #283b9e;
+    padding: 13px 25px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #dce2ff;
+}
+
+/* Events Section */
+.events {
+    padding: 70px 7%;
+    text-align: center;
+}
+
+.events h2 {
+    font-size: 32px;
+    color: #151b3d;
+    margin-bottom: 12px;
+}
+
+.events > p {
+    color: #666;
+    margin-bottom: 35px;
+}
+
+.event-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.event-card {
+    background: white;
+    width: 280px;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: left;
+    transition: 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.13);
+}
+
+.event-card h3 {
+    color: #3448b5;
+    margin-bottom: 20px;
+}
+
+.event-card p {
+    color: #555;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.event-card button {
+    background: #465bd8;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.event-card button:hover {
+    background: #293ca8;
+}
+
+/* About Section */
+.about {
+    background: #e9edff;
+    text-align: center;
+    padding: 60px 10%;
+}
+
+.about h2,
+.contact h2 {
+    color: #151b3d;
+    margin-bottom: 20px;
+}
+
+.about p {
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Footer */
+footer {
+    background: #151b3d;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .event-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+/* Registration Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    color: #3448b5;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #555;
+}
+
+#registrationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#registrationForm label {
+    font-weight: bold;
+    color: #333;
+}
+
+#registrationForm input,
+#registrationForm select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 100%;
+}
+
+#registrationForm button {
+    background: #465bd8;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#registrationForm button:hover {
+    background: #293ca8;
+}
+
+/* Admin Dashboard */
+.admin-dashboard {
+    padding: 65px 7%;
+    background: #eef1ff;
+    text-align: center;
+}
+
+.admin-dashboard h2 {
+    color: #151b3d;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.admin-dashboard > p {
+    color: #666;
+    margin-bottom: 35px;
+}
+
+.dashboard-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 45px;
+}
+
+.stat-card {
+    background: white;
+    width: 250px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+    color: #555;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.stat-card p {
+    color: #465bd8;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.table-heading {
+    color: #151b3d;
+    margin-bottom: 20px;
+    font-size: 23px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.admin-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-dashboard th,
+.admin-dashboard td {
+    padding: 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.admin-dashboard th {
+    background: #465bd8;
+    color: white;
+}
+
+.admin-dashboard td {
+    color: #444;
+}
+
+/* Add New Event Form */
+
+.add-event-section {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+.add-event-section h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #202b55;
+}
+
+.add-event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.add-event-form label {
+    font-weight: 600;
+    color: #333;
+}
+
+.add-event-form input,
+.add-event-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.add-event-form button {
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    background: #4659df;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-event-form button:hover {
+    background: #303fbd;
+}
+
+/* Event Management Table */
+
+#manageEventsTable td {
+    padding: 12px;
+}
+
+.event-action-btn {
+    background: #4659df;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.event-action-btn:hover {
+    background: #303fbd;
+}
+
+.delete-btn {
+    background: #dc3545;
+}
+
+.delete-btn:hover {
+    background: #b02a37;
+}
+
+#editEventSection {
+    border: 2px solid #4659df;
+}
+
+#editEventForm button[type="button"] {
+    background: #777;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
